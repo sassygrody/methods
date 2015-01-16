@@ -1,5 +1,4 @@
 require 'pry-byebug'
-
 ####### QUEUE
 
 # Create a queue
@@ -32,9 +31,7 @@ def find_selected_children(parent_node)
     if node.selected == true
       return node
     else
-      node.children.each do |child|
-        nodes_queue << child
-      end
+      nodes_queue += node.children
     end
   end
 
@@ -59,9 +56,9 @@ def find_recursively(parent_node)
 end
 
 puts "***Recursive***"
-p find_recursively(node1) # == node4
+# p find_recursively(node1) # == node4
 
-p find_recursively(node2) # == node4
+# p find_recursively(node2) # == node4
 # p find_recursively(node3, ) == "no selected children"
 # p find_recursively(node4) == node4
 # p find_recursively(node5) == "no selected children"
