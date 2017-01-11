@@ -1,5 +1,5 @@
-require 'pry-byebug'
 ####### QUEUE
+require 'pry-byebug'
 
 # Create a queue
 # Create a new choice point
@@ -9,7 +9,6 @@ require 'pry-byebug'
 # Find all possible choices after the last one tried
 # Enqueue these choices onto the queue
 # Return
-
 class Node
   attr_reader :children
   attr_reader :selected
@@ -35,7 +34,7 @@ def find_selected_children(parent_node)
     end
   end
 
-  "no selected children" # or just nil
+  'no selected children'
 end
 
 node5 = Node.new([], false)
@@ -50,12 +49,10 @@ p find_selected_children(node3) == "no selected children"
 p find_selected_children(node4) == node4
 p find_selected_children(node5) == "no selected children"
 
-
-def find_recursively(parent_node)
-
+def find_recursively()
 end
 
-puts "***Recursive***"
+puts '***Recursive***'
 # p find_recursively(node1) # == node4
 
 # p find_recursively(node2) # == node4
@@ -63,7 +60,3 @@ puts "***Recursive***"
 # p find_recursively(node4) == node4
 # p find_recursively(node5) == "no selected children"
 # p find_recursively(node6) == node6
-
-
-
-

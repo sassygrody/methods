@@ -12,8 +12,8 @@ def my_flatten(nested_arr)
   end
   arr
 end
-p my_flatten([[1, 2, 3], [5, 6, 7]]) == [1, 2, 3, 5, 6, 7]
-p my_flatten([[1], ["string1", "string2"]]) == [1, "string1", "string2"]
+# p my_flatten([[1, 2, 3], [5, 6, 7]]) == [1, 2, 3, 5, 6, 7]
+# p my_flatten([[1], ["string1", "string2"]]) == [1, "string1", "string2"]
 
-p my_flatten([1, 2, ["string1"], 3]) == [1, 2, "string1", 3]
-p my_flatten([0, [1, 2, 3], 4, 5, "HI CASEY"])
+# p my_flatten([1, 2, ["string1"], 3]) == [1, 2, "string1", 3]
+# p my_flatten([0, [1, 2, 3], 4, 5, "HI CASEY"])

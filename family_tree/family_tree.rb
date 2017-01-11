@@ -1,0 +1,2 @@
+class FamilyTree
+end

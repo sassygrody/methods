@@ -5,7 +5,7 @@ class ConnectFour
   attr_accessor :user_input_move
 
   def initialize
-    @board = [['0', '1', '2', '3', '4', '5'],
+    @board = [
               ['_', '_', '_', '_', '_', '_'],
               ['_', '_', '_', '_', '_', '_'],
               ['_', '_', '_', '_', '_', '_'],
@@ -18,6 +18,7 @@ class ConnectFour
   end
 
   def display_board
+    puts "0 1 2 3 4 5"
     @board.each do |row|
       puts row.join(' ')
     end
@@ -26,46 +27,64 @@ class ConnectFour
 
   def make_a_move
     @user_input_move = gets.chomp
+    if @user_input_move.to_i > 5
+      puts "That's not a column! Choose another."
+      display_board
+      @user_input_move = gets.chomp
+    end
+
     @user_input_move = @user_input_move.to_i
     fill_verticals(@user_input_move)
   end
 
-  # def check_valid_column_number(col_number)
-  #   if col_number.between?(0, @board.length + 1)
-  #     return true
-  #   else
-  #     "please enter a number between 0 and #{@board.length + 1 }"
-  #   end
-  # end
-
   def fill_verticals(int)
-    if @board[-7][int] == 'X'
-      puts 'column full!!!! choose other'
-      sleep(1)
+    arr = []
+    require "pry"; binding.pry
+    pairs = @board.each_index.each_cons(2) { |i| arr << i }
+    # arr.map do |pair|
+
+    if @board.first[int] == 'X'
+      puts 'COLUMN FULL!!!! Choose other'
       display_board
-    elsif @board[-6][int] == 'X'
-      @board[-7][int] = 'X'
-      display_board
-    elsif @board[-5][int] == 'X'
-      @board[-6][int] = 'X'
-      display_board
-    elsif @board[-4][int] == 'X'
-      @board[-5][int] = 'X'
-      display_board
-    elsif @board[-3][int] == 'X'
-      @board[-4][int] = 'X'
-      display_board
-    elsif @board[-2][int] == 'X'
-      @board[-3][int] = 'X'
-      display_board
-    elsif @board[-1][int] == 'X'
-      @board[-2][int] = 'X'
-      display_board
+    elsif @board[pair.last][int] == 'X'
+      @board[pair.first][int] = 'X'
     else
-      @board[-1][int] = 'X'
+      puts 'FILLING IN CORRECTLY!!!!!!!!!!!!!!!!******'
+      @board[6][int] = 'X'
       display_board
     end
+    display_board
   end
+
+    # if @board[0][int] == 'X'
+    #   puts 'column full!!!! choose other'
+    #   sleep(1)
+    #   display_board
+
+
+    # elsif @board[1][int] == 'X'
+    #   @board[0][int] = 'X'
+    #   display_board
+    # elsif @board[2][int] == 'X'
+    #   @board[1][int] = 'X'
+    #   display_board
+    # elsif @board[3][int] == 'X'
+    #   @board[2][int] = 'X'
+    #   display_board
+    # elsif @board[4][int] == 'X'
+    #   @board[3][int] = 'X'
+    #   display_board
+    # elsif @board[5][int] == 'X'
+    #   @board[4][int] = 'X'
+    #   display_board
+    # elsif @board[6][int] == 'X'
+    #   @board[5][int] = 'X'
+    #   display_board
+    # else
+    #   @board[6][int] = 'X'
+    #   display_board
+    # end
+  # end
 
   # def get_column(col_num)
   #   @board.transpose[col_num]
